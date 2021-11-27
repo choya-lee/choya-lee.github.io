@@ -13,6 +13,8 @@ published: true
 
 ---
 
+
+
 考察下面的示例代码：
 
 *main.c*
@@ -24,6 +26,7 @@ int main(){
 printf("hello world!");
 return 0;
 }
+
 ```
 
 正常情况下，通过 `gcc` 在命令行将其编译后产出相应文件，可执行文件或 object 文件等。
@@ -38,6 +41,8 @@ $ gcc -o main.out main.c
 $ ./main.out
 hello world!
 ```
+
+
 
 ### Make 工具
 
@@ -61,6 +66,8 @@ target1 [target2 ...]: [pre-req-1 pre-req-2 ...]
 - `target` 为任务名或文件产出。如果该任务不产出文件，则称该任务为 `Phony Targets`。`make` 内置的 phony target 有 `all`, `install` 及 `clean` 等，这些任务都不实际产出文件，一般用来执行一些命令。
 - `pre-req123...` 这些是依赖项，即该任务所需要的外部输入，这些输入可以是其他文件，也可以是其他任务产出的文件。
 - `command` 为该任务具体需要执行的 shell 命令。
+
+
 
 ### Makefile 示例
 
@@ -106,6 +113,8 @@ $ make
 gcc -o main.out main.c
 ```
 
+
+
 ### 命令的换行
 
 如果一条编译规则中所要执行的 shell 命令有单条很长的情况，可通过 `\` 来换行。
@@ -126,9 +135,13 @@ main.out: main.c
     main.c
 ```
 
+
+
 ### 任务间的依赖
 
 前面调用 `all` 的效果等同于调用 `main.out` 任务，因为 `all` 的输入依赖为 `main.out` 文件。Make 在执行任务前会先检查其输入的依赖项，执行 `all` 时发现它依赖 `main.out` 文件，于是本地查找，发现本地没有，再从 Makefile 中查找看是否有相应任务会产生该文件，结果确实有相应任务能产生该文件，所以先执行能够产生依赖项的任务。
+
+
 
 ### 增量编译
 
@@ -180,6 +193,8 @@ hello wayou!⏎
 
 以上，Makefile 天然实现了增量编译的效果，在大型项目下会节省不少编译时间，因为它只编译过期的任务。
 
+
+
 ### Phony 类型任务的执行
 
 需要注意的是，phony 类型的任务永远都属于过时类型，即，每次 `make` 都会执行。因为这种类型的任务它没有文件产出，就无所谓检查，它的主体只是调用了另外的命令而以。
@@ -226,6 +241,8 @@ make: `main.out' is up to date.
 
 可以看到，属于 phony 类型的任务 `all` 每次都会执行其中定义的 shell 命令，而非 phony 类型的任务 `main.out` 则走了增量编译的逻辑。
 
+
+
 ### 变量/宏
 
 Makefile 中可使用变量（宏）来让脚本更加灵活和减少冗余。
@@ -256,6 +273,8 @@ rm main.out
 
 无论怎样变，我们只需要修改定义在文件开头的 `CC` 变量即可，无须修改其他地方。这当然只是其中一点好处。
 
+
+
 ### 自动变量/Automatic Variables
 
 自动变量/Automatic Variables 是在编译规则匹配后工具进行设置的，具体包括：
@@ -281,6 +300,8 @@ clean:rm $(TARGET)
 
 减少了重复代码，更加易于维护，需要修改时，改动比较小。
 
+
+
 ### VPATH & vpath
 
 可通过 `VPATH` 指定依赖文件及产出文件的搜索目录。
@@ -298,6 +319,8 @@ vpath %.h include
 
 此处 `%` 表示文件名。
 
+
+
 ### 依赖规则/Dependency Rules
 
 ```makefile
@@ -309,6 +332,8 @@ Test2.o : Test2.h
 像这种，只定义了产出与依赖没包含任务命令的无则，叫作依赖无则。因为它只定义了某个产出依赖哪些输入，故名。
 
 这种规则可达到这种效果，即，右边任何文件有变更，左边的产出便成为过时的了。
+
+
 
 ### 匹配规则/Pattern Rules
 
@@ -343,6 +368,8 @@ Test1.o : Test1.h Test2.h
 Test2.o : Test2.h
     g++ -g -o $@ -c $<
 ```
+
+
 
 ### 示例
 
@@ -408,6 +435,5 @@ lame ver: 3⏎
 ```
 
 <hr>
-
-<blockquote data-tool="科技兽" style="border-top: none;border-right: none;border-bottom: none;font-size: 0.9em;background: url(https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20210519013028.png) 10px 10px / 40px no-repeat rgb(31,49,137);overflow: auto;color: inherit;border-left: 0px;padding: 1.2em 2em;margin-bottom: 2em;margin-top: 2em;text-align: center;border-radius: 10px;"><p style="font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, &quot;PingFang SC&quot;, Cambria, Cochin, Georgia, Times, &quot;Times New Roman&quot;, serif;text-align: justify;line-height: 26px;margin-top: 1em;margin-bottom: 0.3em;font-size: 14px;color: rgb(255, 255, 38);"><strong style="color: #fc8705;">参考链接：</strong><br  />[^1]:https://zh.wikipedia.org/wiki/Make<br>https://www.cnblogs.com/Wayou/p/gnu_make_tutorial.html</p></blockquote>
+<blockquote data-tool="科技兽" style="border-top: none;border-right: none;border-bottom: none;font-size: 0.9em;background: url(https://figurebed-iseex.oss-cn-hangzhou.aliyuncs.com/img/20210519013028.png) 10px 10px / 40px no-repeat rgb(31,49,137);overflow: auto;color: inherit;border-left: 0px;padding: 1.2em 2em;margin-bottom: 2em;margin-top: 2em;text-align: center;border-radius: 10px;"><p style="font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, &quot;PingFang SC&quot;, Cambria, Cochin, Georgia, Times, &quot;Times New Roman&quot;, serif;text-align: justify;line-height: 26px;margin-top: 1em;margin-bottom: 0.3em;font-size: 14px;color: rgb(255, 255, 38);"><strong style="color: #fc8705;">参考链接：</strong><br  />https://zh.wikipedia.org/wiki/Make<br>https://www.cnblogs.com/Wayou/p/gnu_make_tutorial.html</p></blockquote>
 
