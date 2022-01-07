@@ -30,9 +30,11 @@ title: 悔文学术导航
 
 - [谷歌学术](https://scholar.google.com/)
 
-- [paperswithcode](https://paperswithcode.com/)
+- [Paperswithcode](https://paperswithcode.com/)
 
 - [Base](https://www.base-search.net/)
+
+- [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
 
 - [Highwire斯坦福学术文献电子期刊](https://www.highwirepress.com/)
 
@@ -53,14 +55,6 @@ title: 悔文学术导航
 - [SemanticScholar](https://www.semanticscholar.org/)
 
   > 由微软联合创始人 Paul Allen 做的免费学术搜索引擎，检索结果来自于期刊、学术会议资料或者是学术机构的文献。这个搜索引擎能检索到 80% 的免费论文文献，另外它直接提供图表预览，能方便研究人员省下更多筛选的工作。
-
-### 优质学术导航
-
-|                                        |                                      |                              |
-| :------------------------------------: | :----------------------------------: | :--------------------------: |
-| [烂番薯](https://xueshu.lanfanshu.cn/) | [虫部落](https://www.chongbuluo.com) | [龙轩导航](http://ilxdh.com) |
-|     [i学术](https://www.ixsdh.com)     |    [格桑花](http://www.20009.net)    | [开心学术](http://kxys.cc/)  |
-|  [沃客学术](https://www.waysto.work)   |    [大木虫](http://www.4243.net)     |                              |
 
 ### 工具
 
