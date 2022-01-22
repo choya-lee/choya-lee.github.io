@@ -70,7 +70,7 @@ nav:
     - {title: 标签, description: tags, url: '/tags'}   
     - {title: 搜索, description: search, url: '/search'}   
     - {title: 学术导航, description: AcademicNavi, url: '/AcademicNavi'}
-    - {title: 文献翻译, description: ThesisTran, url: '/ThesisTran'}    
+    - {title: 论文, description: ThesisNotes, url: '/ThesisNotes'}    
     
 
 # Pagination
